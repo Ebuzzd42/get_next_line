@@ -16,8 +16,8 @@
 
 char	*ft_next_line(char *buffer)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*next_line;
 
 	i = 0;
@@ -25,7 +25,7 @@ char	*ft_next_line(char *buffer)
 		i++;
 	if (!buffer[i])
 	{
-		free (buffer);
+		free(buffer);
 		return (NULL);
 	}
 	next_line = (char *)malloc((ft_strlen(buffer) - i + 1) * sizeof(char));
@@ -36,13 +36,13 @@ char	*ft_next_line(char *buffer)
 	while (buffer[i])
 		next_line[j++] = buffer[i++];
 	next_line[j] = '\0';
-	free (buffer);
+	free(buffer);
 	return (next_line);
 }
 
 char	*ft_first_line(char *buffer)
 {
-	int	i;
+	int		i;
 	char	*first_line;
 
 	i = 0;
@@ -82,8 +82,8 @@ char	*ft_read(int fd, char *str)
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
 		{
-			free (str);
-			free (buffer);
+			free(str);
+			free(buffer);
 			return (NULL);
 		}
 		buffer[bytes] = 0;
@@ -91,14 +91,14 @@ char	*ft_read(int fd, char *str)
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	free (buffer);
+	free(buffer);
 	return (str);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char *first_line;
+	char		*first_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
